@@ -4,6 +4,7 @@ import { ProductInterface, ProductsState } from '../../interfaces/productInterfa
 const initialState: ProductsState = {
   products: [],
   isLoading: false,
+  selectedProduct: null,
 };
 
 export const productsSlice = createSlice({
@@ -17,7 +18,10 @@ export const productsSlice = createSlice({
       state.isLoading = false;
       state.products = action.payload.products;
     },
+    setSelectedProduct: (state, action: PayloadAction<{ product: ProductInterface }>) => {
+      state.selectedProduct = action.payload.product;
+    },
   },
 });
 
-export const { startLoadingProducts, setProducts } = productsSlice.actions;
+export const { startLoadingProducts, setProducts, setSelectedProduct } = productsSlice.actions;

@@ -8,6 +8,7 @@ export interface ProductInterface {
 export interface ProductsState {
     products: ProductInterface[];
     isLoading: boolean;
+    selectedProduct: ProductInterface | null;
 }
 
 export interface ProductFormProps {

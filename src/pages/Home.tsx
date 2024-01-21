@@ -17,13 +17,14 @@ import { ProductInterface } from "../interfaces/productInterface";
 
 export const Home = () => {
   const { products, isLoading } = useAppSelector((state) => state.products);
+
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(getProducts());
   }, []);
 
-  const productsData = products.data;
+  const productsData = products?.data;
 
   const handleDelete = (productId: string) => {
     dispatch(deleteProduct(productId));
@@ -61,7 +62,7 @@ export const Home = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {productsData &&
+              {Array.isArray(productsData) &&
                 productsData.map((product: ProductInterface) => (
                   <TableRow key={product._id}>
                     <TableCell align="center">{product.name}</TableCell>
@@ -77,7 +78,7 @@ export const Home = () => {
                         }}
                       >
                         <Link
-                          to="/"
+                          to={`/update/${product._id}`}
                           style={{
                             textDecoration: "none",
                             fontSize: "1rem",
