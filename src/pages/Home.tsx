@@ -92,7 +92,7 @@ export const Home = () => {
                         </Link>
 
                         <Button
-                          onClick={() => handleDelete(product._id)}
+                          onClick={() => handleDelete(`${product._id}`)}
                           variant="contained"
                           color="error"
                         >
