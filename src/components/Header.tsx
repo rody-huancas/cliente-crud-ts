@@ -24,7 +24,7 @@ export const Header = () => {
           </Link>
 
           <Link
-            to="/"
+            to="/create"
             style={{
               textDecoration: "none",
               fontSize: "1.2rem",

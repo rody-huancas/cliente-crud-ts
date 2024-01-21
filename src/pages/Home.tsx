@@ -18,6 +18,7 @@ import { ProductInterface } from "../interfaces/productInterface";
 export const Home = () => {
   const { products, isLoading } = useAppSelector((state) => state.products);
   const dispatch = useAppDispatch();
+
   useEffect(() => {
     dispatch(getProducts());
   }, []);
