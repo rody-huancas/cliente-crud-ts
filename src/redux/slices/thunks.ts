@@ -20,10 +20,20 @@ export const createProduct = (productData: ProductFormData): AppThunk => {
   return async (dispatch) => {
     try {
       await configApi.post("/products", productData);
-
       dispatch(getProducts());
     } catch (error) {
       console.log(error);
     }
   };
 };
+
+export const deleteProduct = (productId: string): AppThunk => {
+  return async (dispatch) => {
+    try {
+      await configApi.delete(`/products/${productId}`);
+      dispatch(getProducts());
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}

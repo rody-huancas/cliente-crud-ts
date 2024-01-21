@@ -12,7 +12,7 @@ import {
 import { Link } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../redux/hooks/hooks";
 import { useEffect } from "react";
-import { getProducts } from "../redux/slices/thunks";
+import { deleteProduct, getProducts } from "../redux/slices/thunks";
 import { ProductInterface } from "../interfaces/productInterface";
 
 export const Home = () => {
@@ -24,6 +24,10 @@ export const Home = () => {
   }, []);
 
   const productsData = products.data;
+
+  const handleDelete = (productId: string) => {
+    dispatch(deleteProduct(productId));
+  };
 
   return (
     <Container>
@@ -87,7 +91,11 @@ export const Home = () => {
                           EDITAR
                         </Link>
 
-                        <Button variant="contained" color="error">
+                        <Button
+                          onClick={() => handleDelete(product._id)}
+                          variant="contained"
+                          color="error"
+                        >
                           Eliminar
                         </Button>
                       </div>
